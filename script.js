@@ -1,10 +1,12 @@
-function makeGrid(rows, cols) {
-	const container = document.getElementById("container");
-	container.style.setProperty("--grid-rows", rows);
-	container.style.setProperty("--grid-cols", cols);
-	for (c = 0; c < rows * cols; c++) {
-		let cell = document.createElement("div");
-		container.appendChild(cell).className = "grid-item";
+const grid = document.querySelector(".grid");
+
+function makeGrid(gridSize) {
+	grid.style.gridTemplateColumns = `repeat(${gridSize} , 1fr)`;
+	grid.style.gridTemplateRows = `repeat(${gridSize} , 1fr)`;
+	for (i = 0; i < gridSize * gridSize; i++) {
+		const div = document.createElement("div");
+		div.classList.add("grid-item");
+		grid.appendChild(div);
 	}
 }
 
@@ -17,5 +19,5 @@ function colorOnHover() {
 	);
 }
 
-makeGrid(16, 16);
+makeGrid(16);
 colorOnHover();
