@@ -1,4 +1,5 @@
 const grid = document.querySelector(".grid");
+const userGridBtn = document.querySelector(".user-grid-btn");
 
 function makeGrid(gridSize) {
 	grid.style.gridTemplateColumns = `repeat(${gridSize} , 1fr)`;
@@ -8,6 +9,7 @@ function makeGrid(gridSize) {
 		div.classList.add("grid-item");
 		grid.appendChild(div);
 	}
+	colorOnHover();
 }
 
 function colorOnHover() {
@@ -19,5 +21,15 @@ function colorOnHover() {
 	);
 }
 
+userGridBtn.addEventListener("click", () => {
+	let gridSize = prompt("Enter a new grid size: ");
+	while (gridSize > 100 || gridSize < 1) {
+		gridSize = prompt(
+			"Whoops, the grid size needs to be a positive number of 100 or less.\nEnter a new grid size: "
+		);
+	}
+	grid.textContent = "";
+	makeGrid(gridSize);
+});
+
 makeGrid(16);
-colorOnHover();
