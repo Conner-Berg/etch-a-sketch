@@ -28,8 +28,9 @@ userGridBtn.addEventListener("click", () => {
 			"Whoops, the grid size needs to be a positive number of 100 or less.\nEnter a new grid size: "
 		);
 	}
+	let gridSizeInt = parseInt(gridSize);
 	grid.textContent = "";
-	makeGrid(gridSize);
+	makeGrid(gridSizeInt);
 });
 
 makeGrid(16);
